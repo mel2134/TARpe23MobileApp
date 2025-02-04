@@ -79,7 +79,7 @@ namespace ViewModels
             }
         }
         [RelayCommand]
-        private void InputNumber(string key)
+        private void NumberInput(string key)
         {
             InputText += key;
         }
@@ -93,7 +93,7 @@ namespace ViewModels
             InputText += $" {op} ";
         }
         [RelayCommand]
-        private void RegionalOperator(string op)
+        private void RegionOperator(string op)
         {
             if (isSciOpWaiting)
             {
@@ -103,7 +103,7 @@ namespace ViewModels
             InputText += $" {op} ";
         }
         [RelayCommand]
-        private void SciOperator(string op) {
+        private void ScientificOperator(string op) {
             InputText += $"{op}(";
             isSciOpWaiting = true;
         }
