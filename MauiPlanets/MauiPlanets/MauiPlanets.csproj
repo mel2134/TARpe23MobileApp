@@ -58,7 +58,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\ceres.png" />
+	  <None Remove="Resources\Images\eris.png" />
+	  <None Remove="Resources\Images\haumea.png" />
 	  <None Remove="Resources\Images\imgprofile.png" />
+	  <None Remove="Resources\Images\makemake.png" />
+	  <None Remove="Resources\Images\pluto.png" />
 	</ItemGroup>
 
 	<ItemGroup>
