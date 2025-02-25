@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-
+﻿using Data;
+using Microsoft.Extensions.Logging;
+using ViewModels;
 namespace MauiCRUD
 {
     public static class MauiProgram
@@ -18,7 +19,9 @@ namespace MauiCRUD
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<ProductsViewModel>();
+            builder.Services.AddSingleton<DatabaseContext>();
             return builder.Build();
         }
     }

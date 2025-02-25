@@ -48,7 +48,9 @@ namespace ViewModels
             {
                 await operation?.Invoke();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+                await Shell.Current.DisplayAlert("Error", $"Product updating failed: {ex}", "OK");
+            }
             finally
             {
                 IsBusy = false;
@@ -92,7 +94,6 @@ namespace ViewModels
                         var index = Products.IndexOf(OperatingProduct);
                         Products.RemoveAt(index);
                         Products.Insert(index, productCopy);
-                        //Products[index] = productCopy;
                     }
                     else
                     {

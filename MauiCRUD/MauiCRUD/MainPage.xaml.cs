@@ -7,9 +7,9 @@ namespace MauiCRUD
         private readonly ProductsViewModel _productsViewModel;
         public MainPage(ProductsViewModel productsViewModel)
         {
-            InitializeComponent();
             _productsViewModel = productsViewModel;
             BindingContext = productsViewModel;
+            InitializeComponent();
         }
 
         protected async override void OnAppearing()
