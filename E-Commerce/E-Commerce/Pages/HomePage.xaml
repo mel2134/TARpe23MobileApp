@@ -51,8 +51,15 @@
                  Color="Transparent"/>
         <Label Text="Shop by category"
                Style="{StaticResource H2}"/>
+        
         <BoxView HeightRequest="5"
-         Color="Transparent"/>
+            Color="Transparent"/>
+
+
+        <Label Text="Lets order some fresh fruits and vegetables for you"
+               Style="{StaticResource H2}"
+               LineHeight="1.3"
+               Opacity="0.8"/>
         <CollectionView ItemsSource="{Binding Categories}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal"
@@ -87,8 +94,10 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
         <BoxView HeightRequest="15"
-         Color="Transparent"/>
+            Color="Transparent"/>
+        
         <Label Text="Popular"
                Style="{StaticResource H2}"/>
 
