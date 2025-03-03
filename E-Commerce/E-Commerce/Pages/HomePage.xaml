@@ -58,7 +58,8 @@
                Opacity="0.8"/>
         
         <controls:Spacer Space="20"/>
-        <CollectionView ItemsSource="{Binding Offers}">
+        <CollectionView ItemsSource="{Binding Offers}"
+                        HeightRequest="180">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal"
                                    ItemSpacing="15"/>
@@ -100,7 +101,8 @@
         <controls:Spacer Space="20"/>
         <Label Text="Shop by category"
                Style="{StaticResource H2}"/>
-        <CollectionView ItemsSource="{Binding Categories}">
+        <CollectionView ItemsSource="{Binding Categories}"
+                        HeightRequest="175">
             
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal"
