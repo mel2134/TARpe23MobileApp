@@ -1,4 +1,4 @@
-﻿using Enumerations;
+﻿using E_Commerce.Shared.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Text;

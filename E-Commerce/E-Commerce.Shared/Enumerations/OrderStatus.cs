@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Enumerations
+namespace E_Commerce.Shared.Enumerations
 {
     public enum OrderStatus
     {
