@@ -29,13 +29,17 @@ namespace E_Commerce.Api
             }
 
             app.UseHttpsRedirection();
+            var mastersGroup = app.MapGroup("/masters").AllowAnonymous();
+            mastersGroup.MapGet("/categories", async (DataContext context) =>
+                await context.Categories.AsNoTracking().ToArrayAsync()
 
-            app.UseAuthorization();
+            );
+            mastersGroup.MapGet("/offers", async (DataContext context) =>
+                await context.Offers.AsNoTracking().ToArrayAsync()
 
+            );
 
-            app.MapControllers();
-
-            app.Run();
+            app.Run("https://localhost:12345");
         }
     }
 }
