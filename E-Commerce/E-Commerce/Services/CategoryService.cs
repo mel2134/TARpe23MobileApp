@@ -26,7 +26,10 @@ namespace Services
                     var content = await resp.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(content))
                     {
-                        _categories = JsonSerializer.Deserialize<IEnumerable<Category>>(content);
+                        _categories = JsonSerializer.Deserialize<IEnumerable<Category>>(content, new JsonSerializerOptions()
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
                     }
                 }
                 else

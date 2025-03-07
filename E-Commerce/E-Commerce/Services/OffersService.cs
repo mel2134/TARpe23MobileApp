@@ -20,7 +20,10 @@ namespace Services
                 var content = await resp.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(content))
                 {
-                    return JsonSerializer.Deserialize<IEnumerable<Offer>>(content);
+                    return JsonSerializer.Deserialize<IEnumerable<Offer>>(content, new JsonSerializerOptions()
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
                 }
             }
                 return Enumerable.Empty<Offer>();
