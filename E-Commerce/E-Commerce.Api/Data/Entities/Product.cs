@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using E_Commerce.Shared.Dtos;
+using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 
 namespace E_Commerce.Api.Data.Entities
 {
@@ -95,6 +97,8 @@ namespace E_Commerce.Api.Data.Entities
 
             return products;
         }
+        internal static readonly Expression<Func<Product, ProductDto>> DtoSelector = p =>
+        new ProductDto(p.Id, p.Name, p.Image, p.Price, p.Unit, p.CategoryId);
 
     }
 }

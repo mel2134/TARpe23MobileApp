@@ -1,6 +1,7 @@
 
 using E_Commerce.Api.Constants;
 using E_Commerce.Api.Data;
+using E_Commerce.Api.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 namespace E_Commerce.Api
 {
@@ -31,13 +32,23 @@ namespace E_Commerce.Api
             app.UseHttpsRedirection();
             var mastersGroup = app.MapGroup("/masters").AllowAnonymous();
             mastersGroup.MapGet("/categories", async (DataContext context) =>
-                await context.Categories.AsNoTracking().ToArrayAsync()
+                TypedResults.Ok(await context.Categories.AsNoTracking().ToArrayAsync())
 
             );
             mastersGroup.MapGet("/offers", async (DataContext context) =>
-                await context.Offers.AsNoTracking().ToArrayAsync()
+                TypedResults.Ok(await context.Offers.AsNoTracking().ToArrayAsync())
 
             );
+            mastersGroup.MapGet("/popular-products", async (DataContext context,int? count) =>
+            {
+                if(!count.HasValue || count <= 0)
+                {
+                    count = 6;
+                }
+                var randomProducts = await context.Products.AsNoTracking().OrderBy(p => Guid.NewGuid())
+                .Take(count.Value).Select(Product.DtoSelector).ToArrayAsync();
+                return TypedResults.Ok(randomProducts);
+            });
             app.UseStaticFiles();
             app.Run("https://localhost:12345");
         }
