@@ -38,7 +38,7 @@ namespace E_Commerce.Api
                 await context.Offers.AsNoTracking().ToArrayAsync()
 
             );
-
+            app.UseStaticFiles();
             app.Run("https://localhost:12345");
         }
     }
