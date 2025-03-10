@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using E_Commerce.Shared.Dtos;
 using Models;
 using Services;
@@ -46,6 +47,21 @@ namespace ViewModels
             }
             finally {
                 IsBusy = false;
+            }
+        }
+
+        [RelayCommand]
+        private void AddToCart(int productId) => UpdateCart(productId, 1);
+
+        
+        [RelayCommand]
+        private void RemoveFromCart(int productId) => UpdateCart(productId, -1);
+        private void UpdateCart(int productId, int count)
+        {
+            var product = PopularProducts.FirstOrDefault(P => P.Id == productId);
+            if (product != null)
+            {
+                product.CartQuantity+=count;
             }
         }
     }
