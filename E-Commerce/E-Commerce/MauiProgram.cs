@@ -48,6 +48,7 @@ namespace E_Commerce
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<OffersService>();
             builder.Services.AddTransient<ProductsService>();
+            builder.Services.AddSingleton<CartViewModel>();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
