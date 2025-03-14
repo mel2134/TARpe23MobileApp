@@ -24,7 +24,32 @@ namespace ViewModels
             _cartViewModel = cartViewModel;
 
 
+            _cartViewModel.CartItemUpdated += CartViewModel_CartItemUpdated;
+            _cartViewModel.CartItemRemoved += CartViewModel_CartItemRemoved;
+            _cartViewModel.CartCountUpdated += CartViewModel_CartCountUpdated;
+
+
         }
+        public void Dispose()
+        {
+            _cartViewModel.CartItemUpdated -= CartViewModel_CartItemUpdated;
+            _cartViewModel.CartItemRemoved -= CartViewModel_CartItemRemoved;
+            _cartViewModel.CartCountUpdated -= CartViewModel_CartCountUpdated;
+        }
+        private void ModifyProductQuantity(int id,int quantity)
+        {
+            var product = PopularProducts.FirstOrDefault(p => p.Id == id);
+            if (product != null)
+            {
+                product.CartQuantity = quantity;
+            }
+        }
+        private void CartViewModel_CartItemRemoved(object? sender, int id) => ModifyProductQuantity(id, 0);
+
+        private void CartViewModel_CartItemUpdated(object? sender, CartItem e) => ModifyProductQuantity(e.ProductId, e.Quantity);
+
+        private void CartViewModel_CartCountUpdated(object? sender, int count) => CartCount = count;
+
         public ObservableCollection<Category> Categories { get; set; } = new();
         public ObservableCollection<Offer> Offers { get; set; } = new();
         public ObservableCollection<ProductDto> PopularProducts { get; set; } = new();
@@ -33,8 +58,11 @@ namespace ViewModels
         private bool _isBusy = true;
         [ObservableProperty]
         private int _cartCount;
+
+        private bool _isInitialized = false;
         public async Task InitalizeAsync()
         {
+            if (_isInitialized) return;
             try
             {
                 foreach (var cat in await _categoryService.GetMainCategoriesAsync())
@@ -49,6 +77,7 @@ namespace ViewModels
                 {
                     PopularProducts.Add(prod);
                 }
+                _isInitialized = true;
             }
             finally {
                 IsBusy = false;
