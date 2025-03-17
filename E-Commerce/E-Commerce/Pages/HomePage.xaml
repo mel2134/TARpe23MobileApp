@@ -136,15 +136,19 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Category">
                             <Border StrokeShape="RoundRectangle 5"
-                    StrokeThickness="0">
+                                    StrokeThickness="0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:HomePageViewModel}},Path=GoToCategoryCommand}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
                                 <Grid>
                                     <Image 
-                           Aspect="AspectFill"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           HeightRequest="175"
-                           WidthRequest="150"
-                           Opacity="0.9">
+                                           Aspect="AspectFill"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           HeightRequest="175"
+                                           WidthRequest="150"
+                                           Opacity="0.9">
                                         <Image.Source>
                                             <UriImageSource Uri="{Binding Image}"
                                             CachingEnabled="True"/>
