@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ViewModels
 {
-    public class CategoryProductsViewModel
+    public partial class CategoryProductsViewModel : ObservableObject
     {
     }
 }

@@ -8,7 +8,9 @@
              x:DataType="pages:CategoriesPage">
     <ScrollView>
         <CollectionView ItemsSource="{Binding AllCategories}"
-                        ItemsLayout="VerticalGrid,3">
+                        ItemsLayout="VerticalGrid,3"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Category">
                     <Border BackgroundColor="{StaticResource Tertiary}"

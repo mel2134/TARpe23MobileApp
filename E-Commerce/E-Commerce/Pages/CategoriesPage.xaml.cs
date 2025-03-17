@@ -23,4 +23,15 @@ public partial class CategoriesPage : ContentPage
             AllCategories.Add(category);
         }
     }
+
+    private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if(e.CurrentSelection.Count > 0)
+        {
+            if (e.CurrentSelection?[0] is Category categories)
+            {
+                await Shell.Current.GoToAsync(nameof(CategoryProductsPage));
+            }
+        }
+    }
 }
