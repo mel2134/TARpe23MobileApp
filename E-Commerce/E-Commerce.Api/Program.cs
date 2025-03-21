@@ -20,6 +20,7 @@ namespace E_Commerce.Api
             builder.Services.AddDbContext<DataContext>(options=>
                 options.UseSqlServer(builder.Configuration.GetConnectionString(DatabaseConstants.GroceryConnectionStringKey)));
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
